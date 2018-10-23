@@ -51,6 +51,7 @@ resources:
   - ${file(resources/s3-bucket.yml))}
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml)}
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
