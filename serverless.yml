@@ -12,9 +12,11 @@ custom:
 
   tableName: ${self:custom.stage}-notes-2
 
-  tableThroughput:
+  tableThroughputs:
     prod: 5
     default: 1
+
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
 
   webpack:
     webpackConfig: ./webpack.config.js
@@ -48,7 +50,7 @@ resources:
   # DynamoDB
   - ${file(resources/dynamodb-table.yml)}
   # S3
-  - ${file(resources/s3-bucket.yml))}
+  - ${file(resources/s3-bucket.yml)}
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
